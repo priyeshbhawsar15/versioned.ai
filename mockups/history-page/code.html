@@ -1,0 +1,335 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Regression Results - PromptLab IDE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#2d3449",
+                        "on-secondary-container": "#004119",
+                        "on-primary-fixed-variant": "#004395",
+                        "on-surface": "#dae2fd",
+                        "on-primary": "#002e6a",
+                        "surface-container-high": "#222a3d",
+                        "on-tertiary-container": "#5c0008",
+                        "error": "#ffb4ab",
+                        "surface-tint": "#adc6ff",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-error-container": "#ffdad6",
+                        "surface-bright": "#31394d",
+                        "surface-container-highest": "#2d3449",
+                        "on-secondary-fixed": "#002109",
+                        "tertiary-fixed": "#ffdad7",
+                        "surface-dim": "#0b1326",
+                        "on-secondary": "#003915",
+                        "on-error": "#690005",
+                        "secondary-container": "#00b954",
+                        "surface-container-low": "#131b2e",
+                        "inverse-surface": "#dae2fd",
+                        "background": "#0b1326",
+                        "error-container": "#93000a",
+                        "on-primary-fixed": "#001a42",
+                        "surface-container": "#171f33",
+                        "on-tertiary-fixed": "#410004",
+                        "outline-variant": "#424754",
+                        "surface": "#0b1326",
+                        "primary-container": "#4d8eff",
+                        "on-surface-variant": "#c2c6d6",
+                        "on-tertiary": "#68000a",
+                        "on-secondary-fixed-variant": "#005321",
+                        "inverse-on-surface": "#283044",
+                        "secondary-fixed": "#6bff8f",
+                        "on-primary-container": "#00285d",
+                        "secondary": "#4ae176",
+                        "outline": "#8c909f",
+                        "on-tertiary-fixed-variant": "#930013",
+                        "tertiary-fixed-dim": "#ffb3ad",
+                        "primary": "#adc6ff",
+                        "tertiary": "#ffb3ad",
+                        "inverse-primary": "#005ac2",
+                        "secondary-fixed-dim": "#4ae176",
+                        "on-background": "#dae2fd",
+                        "tertiary-container": "#ff5451",
+                        "primary-fixed": "#d8e2ff",
+                        "surface-container-lowest": "#060e20"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "lg": "24px",
+                        "md": "16px",
+                        "gutter": "16px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "sidebar-width": "260px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "label-sm": ["JetBrains Mono"],
+                        "headline-lg": ["Inter"],
+                        "code-md": ["JetBrains Mono"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-sm": ["11px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "headline-lg": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "code-md": ["13px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #0b1326; color: #dae2fd; }
+        /* Custom Scrollbar for IDE feel */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #0b1326; }
+        ::-webkit-scrollbar-thumb { background: #424754; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #8c909f; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md h-screen flex flex-col overflow-hidden">
+<!-- TopNavBar -->
+<header class="bg-surface border-b border-outline-variant fixed top-0 w-full z-50 flex justify-between items-center h-14 px-md">
+<div class="flex items-center gap-md">
+<div class="font-headline-md text-headline-md font-bold text-primary tracking-tight">PromptLab IDE</div>
+<nav class="hidden md:flex items-center gap-lg ml-lg">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors py-4" href="#">Playground</a>
+<a class="font-body-md text-body-md text-primary border-b-2 border-primary pb-[15px] pt-4 font-semibold" href="#">Regression</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors py-4" href="#">Evaluators</a>
+</nav>
+</div>
+<div class="flex items-center gap-sm text-on-surface-variant">
+<button class="p-2 hover:bg-surface-container-high rounded transition-all duration-150 ease-in-out">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+</button>
+<button class="p-2 hover:bg-surface-container-high rounded transition-all duration-150 ease-in-out">
+<span class="material-symbols-outlined text-[20px]">help</span>
+</button>
+<button class="p-2 hover:bg-surface-container-high rounded transition-all duration-150 ease-in-out">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary-container ml-sm overflow-hidden border border-outline-variant">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLv5dcWYeSCqX5FL_-uGz-tBpMcDZO4UMbzWYC_ZdYFF6Qv0EnwLGJp85qqgdNGnpnnWYN8chFt5p3nRyoRC-C4KEAqLgnPwkhk7TcAD_BvRy8B7qoUhUUeT7lyWA-SNyTI3rKM7aD1hlIwtObLVRLkJWdo4CUYT-VdpiqGKtaKLPgmbOjWylsdfXYzlGa4ZGeTxNeUi_0t2WSXFsGWkjVOl1Mg2Qis7HgkvnzZ_hsThPlPQmJ057uoUJz4">
+</div>
+</div>
+</header>
+<div class="flex flex-1 pt-14 h-full">
+<!-- SideNavBar -->
+<aside class="bg-surface-container border-r border-outline-variant fixed left-0 top-14 h-[calc(100vh-3.5rem)] w-sidebar-width flex flex-col py-md gap-sm z-40 hidden md:flex">
+<div class="px-md pb-md border-b border-outline-variant mb-sm flex items-center gap-sm">
+<div class="w-10 h-10 rounded bg-surface-variant flex items-center justify-center border border-outline-variant text-primary font-bold">
+                    CP
+                </div>
+<div>
+<div class="font-body-md text-body-md font-semibold text-on-surface">Current Project</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">v2.1.0-alpha</div>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-xs px-sm">
+<a class="flex items-center gap-sm px-sm py-2 rounded font-label-sm text-label-sm text-on-surface-variant hover:bg-surface-variant transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+                    Providers
+                </a>
+<a class="flex items-center gap-sm px-sm py-2 rounded font-label-sm text-label-sm text-on-surface-variant hover:bg-surface-variant transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]">database</span>
+                    Datasets
+                </a>
+<a class="flex items-center gap-sm px-sm py-2 rounded font-label-sm text-label-sm text-on-surface-variant hover:bg-surface-variant transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]">memory</span>
+                    Caching
+                </a>
+<a class="flex items-center gap-sm px-sm py-2 rounded font-label-sm text-label-sm bg-primary-container text-on-primary-container font-bold transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]">history</span>
+                    History
+                </a>
+</nav>
+<div class="px-sm mt-auto">
+<a class="flex items-center gap-sm px-sm py-2 rounded font-label-sm text-label-sm text-on-surface-variant hover:bg-surface-variant transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]">logout</span>
+                    Logout
+                </a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-[260px] flex flex-col h-full bg-background overflow-hidden">
+<!-- Metrics Overview -->
+<div class="p-md border-b border-outline-variant bg-surface shrink-0">
+<div class="flex items-center justify-between mb-md">
+<h1 class="font-headline-md text-headline-md text-on-surface">Regression Suite: Customer Support Bot</h1>
+<div class="flex gap-sm">
+<button class="px-4 py-1.5 rounded border border-outline-variant text-on-surface font-label-sm text-label-sm hover:bg-surface-variant transition-colors flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">download</span> Export
+                        </button>
+<button class="px-4 py-1.5 rounded bg-primary-container text-on-primary-container font-label-sm text-label-sm hover:bg-primary-fixed transition-colors flex items-center gap-xs font-bold">
+<span class="material-symbols-outlined text-[16px]">play_arrow</span> Run Suite
+                        </button>
+</div>
+</div>
+<div class="grid grid-cols-4 gap-md">
+<!-- Metric Card 1 -->
+<div class="bg-surface border border-outline-variant p-sm rounded flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-xs">Total Pass Rate</span>
+<div class="flex items-baseline gap-sm">
+<span class="font-headline-lg text-headline-lg text-secondary">94%</span>
+<span class="font-label-sm text-label-sm text-secondary flex items-center"><span class="material-symbols-outlined text-[14px]">arrow_upward</span> 2.1%</span>
+</div>
+</div>
+<!-- Metric Card 2 -->
+<div class="bg-surface border border-outline-variant p-sm rounded flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-xs">Avg Score</span>
+<div class="flex items-baseline gap-sm">
+<span class="font-headline-lg text-headline-lg text-on-surface">0.89</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">/ 1.0</span>
+</div>
+</div>
+<!-- Metric Card 3 -->
+<div class="bg-surface border border-outline-variant p-sm rounded flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-xs">Median Latency</span>
+<div class="flex items-baseline gap-sm">
+<span class="font-headline-lg text-headline-lg text-on-surface">420ms</span>
+<span class="font-label-sm text-label-sm text-error flex items-center"><span class="material-symbols-outlined text-[14px]">arrow_upward</span> 15ms</span>
+</div>
+</div>
+<!-- Metric Card 4 -->
+<div class="bg-surface border border-outline-variant p-sm rounded flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-xs">Assertion Success</span>
+<div class="flex items-baseline gap-sm">
+<span class="font-headline-lg text-headline-lg text-secondary">98.2%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">891/907</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Workspace: Table & Inspector Split -->
+<div class="flex-1 flex overflow-hidden">
+<!-- Results Table -->
+<div class="flex-1 overflow-auto border-r border-outline-variant bg-surface-container-low flex flex-col relative">
+<div class="sticky top-0 bg-surface-container z-10 border-b border-outline-variant flex font-label-sm text-label-sm text-on-surface-variant uppercase">
+<div class="w-12 py-2 px-sm text-center border-r border-outline-variant">Status</div>
+<div class="flex-1 py-2 px-sm border-r border-outline-variant">Input Snippet</div>
+<div class="flex-[1.5] py-2 px-sm">Assertion Breakdown</div>
+</div>
+<!-- Row 1 (Selected) -->
+<div class="flex border-b border-outline-variant hover:bg-surface-variant cursor-pointer transition-colors bg-surface-variant border-l-2 border-l-primary group">
+<div class="w-12 py-sm px-sm flex justify-center items-start border-r border-outline-variant">
+<span class="material-symbols-outlined text-error text-[18px]">cancel</span>
+</div>
+<div class="flex-1 py-sm px-sm border-r border-outline-variant">
+<div class="font-code-md text-code-md text-on-surface line-clamp-2 leading-relaxed">
+                                "I want to order a large pepperoni pizza to 123 Main St."
+                            </div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mt-xs">ID: test_req_042</div>
+</div>
+<div class="flex-[1.5] py-sm px-sm flex flex-wrap gap-xs items-start">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded border border-outline-variant bg-surface-dim font-code-md text-[11px] text-on-surface">
+                                intent: "order_pizza" <span class="material-symbols-outlined text-secondary text-[12px]">check_circle</span>
+</span>
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded border border-outline-variant bg-surface-dim font-code-md text-[11px] text-on-surface">
+                                size: "large" <span class="material-symbols-outlined text-secondary text-[12px]">check_circle</span>
+</span>
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded border border-error bg-error-container/20 font-code-md text-[11px] text-error">
+                                toppings: ["pepperoni"] <span class="material-symbols-outlined text-error text-[12px]">cancel</span>
+</span>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="flex border-b border-outline-variant hover:bg-surface-variant cursor-pointer transition-colors group">
+<div class="w-12 py-sm px-sm flex justify-center items-start border-r border-outline-variant">
+<span class="material-symbols-outlined text-secondary text-[18px]">check_circle</span>
+</div>
+<div class="flex-1 py-sm px-sm border-r border-outline-variant">
+<div class="font-code-md text-code-md text-on-surface line-clamp-2 leading-relaxed opacity-80 group-hover:opacity-100">
+                                "Cancel my subscription immediately."
+                            </div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mt-xs">ID: test_req_043</div>
+</div>
+<div class="flex-[1.5] py-sm px-sm flex flex-wrap gap-xs items-start">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded border border-outline-variant bg-surface-dim font-code-md text-[11px] text-on-surface">
+                                intent: "cancel_sub" <span class="material-symbols-outlined text-secondary text-[12px]">check_circle</span>
+</span>
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded border border-outline-variant bg-surface-dim font-code-md text-[11px] text-on-surface">
+                                urgency: "high" <span class="material-symbols-outlined text-secondary text-[12px]">check_circle</span>
+</span>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="flex border-b border-outline-variant hover:bg-surface-variant cursor-pointer transition-colors group">
+<div class="w-12 py-sm px-sm flex justify-center items-start border-r border-outline-variant">
+<span class="material-symbols-outlined text-secondary text-[18px]">check_circle</span>
+</div>
+<div class="flex-1 py-sm px-sm border-r border-outline-variant">
+<div class="font-code-md text-code-md text-on-surface line-clamp-2 leading-relaxed opacity-80 group-hover:opacity-100">
+                                "How do I reset my password?"
+                            </div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mt-xs">ID: test_req_044</div>
+</div>
+<div class="flex-[1.5] py-sm px-sm flex flex-wrap gap-xs items-start">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded border border-outline-variant bg-surface-dim font-code-md text-[11px] text-on-surface">
+                                intent: "faq_password" <span class="material-symbols-outlined text-secondary text-[12px]">check_circle</span>
+</span>
+</div>
+</div>
+</div>
+<!-- Side Panel (Inspector) -->
+<div class="w-[450px] bg-surface flex flex-col shrink-0">
+<div class="p-sm border-b border-outline-variant bg-surface-container flex items-center justify-between">
+<div class="font-label-sm text-label-sm text-on-surface font-semibold flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">data_object</span> Inspector: test_req_042
+                        </div>
+<button class="p-1 hover:bg-surface-variant rounded text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+<div class="flex border-b border-outline-variant bg-surface-container-low font-label-sm text-label-sm">
+<button class="px-md py-2 text-primary border-b-2 border-primary font-bold">Diff View</button>
+<button class="px-md py-2 text-on-surface-variant hover:text-on-surface transition-colors">Raw Output</button>
+<button class="px-md py-2 text-on-surface-variant hover:text-on-surface transition-colors">Trace</button>
+</div>
+<div class="flex-1 overflow-auto p-sm bg-surface-dim font-code-md text-code-md">
+<div class="flex flex-col gap-1">
+<div class="text-on-surface-variant">// Expected vs Actual Output</div>
+<div class="text-on-surface">{</div>
+<div class="pl-4 text-on-surface">"intent": <span class="text-secondary">"order_pizza"</span>,</div>
+<div class="pl-4 text-on-surface">"entities": {</div>
+<div class="pl-8 text-on-surface">"size": <span class="text-secondary">"large"</span>,</div>
+<div class="pl-8 bg-error-container/10 border-l-2 border-error text-on-surface py-0.5">
+<span class="line-through text-on-surface-variant">"toppings": ["pepperoni"],</span> <span class="text-error ml-2 text-[10px] uppercase font-bold tracking-wider">Missing in output</span>
+</div>
+<div class="pl-8 bg-secondary-container/10 border-l-2 border-secondary text-on-surface py-0.5 mt-1">
+<span class="text-secondary">"toppings": []</span> <span class="text-secondary ml-2 text-[10px] uppercase font-bold tracking-wider">Actual</span>
+</div>
+<div class="pl-8 text-on-surface">"address": <span class="text-secondary">"123 Main St"</span></div>
+<div class="pl-4 text-on-surface">}</div>
+<div class="text-on-surface">}</div>
+</div>
+</div>
+<div class="p-sm border-t border-outline-variant bg-surface-container">
+<div class="font-label-sm text-label-sm text-on-surface-variant mb-xs">Model Metadata</div>
+<div class="grid grid-cols-2 gap-x-sm gap-y-xs font-code-md text-[11px] text-on-surface">
+<div class="text-on-surface-variant">Tokens:</div><div class="text-right">142 prompt / 48 comp</div>
+<div class="text-on-surface-variant">Latency:</div><div class="text-right">412ms</div>
+<div class="text-on-surface-variant">Model:</div><div class="text-right text-primary">gpt-4-turbo-1106</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

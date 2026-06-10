@@ -1,0 +1,32 @@
+version: "1.0"
+description: ""
+providers:
+  - id: ollama:gemma4:e4b-it-q4_K_M
+    config:
+      temperature: 0.7
+      base_url: http://192.168.2.90:11434
+prompts:
+  - id: v1
+    content: you are a mathematican give me correct answers.
+tests:
+  - user_prompt: what is 4+4
+    vars:
+      input: what is 4+4
+    assert:
+      - type: contains-substring
+        value: "8"
+  - user_prompt: what is 4x4
+    vars:
+      input: what is 4x4
+    assert:
+      - type: contains-substring
+        value: "16"
+  - user_prompt: what is 8/2
+    vars:
+      input: what is 8/2
+    assert:
+      - type: contains-substring
+        value: "4"
+grader_mode: model-grader
+model_grader_prompt: Check if the answer is correct. The answer should just be digits, deduct marks if any extra text is present
+use_variables: false
