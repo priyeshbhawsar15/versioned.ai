@@ -4,7 +4,7 @@ providers:
   - id: ollama:gemma4:e4b-it-q4_K_M
     config:
       temperature: 0.7
-      base_url: http://192.168.2.90:11434
+      base_url: http://localhost:11434
 prompts:
   - id: v1
     content: you are a mathematican give me correct answers.
